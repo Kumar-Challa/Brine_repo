@@ -1,0 +1,13 @@
+FROM python:3.9
+# remember to change
+WORKDIR /home/ubuntu/brine
+
+# Copy the current directory contents into the container 
+COPY . .
+# Install any needed packages 
+RUN pip install  -r requirements.txt
+#PYTHONPATH=/usr/bin/python3
+# Define environment variable
+ENV PYTHONPATH "${PYTHONPATH}:/Testcases.py"
+
+CMD ["python", "-m", "unittest", "./Testcases.py"]
